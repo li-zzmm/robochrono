@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RoboChrono</title>
+    <meta name="description" content="RoboChrono: A real robot benchmark for streaming task understanding.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top">RoboChrono</a>
+      <nav aria-label="Primary navigation">
+        <a href="#overview">Overview</a>
+        <a href="#vqa-format">VQA Format</a>
+        <a href="#tasks">Tasks</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#citation">Citation</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-video-bg" aria-hidden="true">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="../data/airpods/observation.images.top/chunk-000/file-000.mp4" type="video/mp4">
+          </video>
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="../data/airpods/observation.images.wrist_L/chunk-000/file-000.mp4" type="video/mp4">
+          </video>
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="../data/airpods/observation.images.wrist_R/chunk-000/file-000.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Real Robot Streaming Task Understanding</p>
+          <h1>RoboChrono</h1>
+          <p class="tagline">A Real-Robot Benchmark for Streaming Task Understanding</p>
+          <p class="authors">
+            Anonymous Author<sup>1</sup>,
+            Anonymous Author<sup>1</sup>,
+            Anonymous Author<sup>2</sup>,
+            Anonymous Author<sup>1</sup>
+          </p>
+          <p class="affiliations"><sup>1</sup>Institution Placeholder &nbsp; <sup>2</sup>Lab Placeholder</p>
+          <div class="action-row" aria-label="Project links">
+            <a class="button primary" href="https://arxiv.org/abs/0000.00000" target="_blank" rel="noopener">Paper</a>
+            <a class="button" href="https://github.com/yyywv/benchmark" target="_blank" rel="noopener">GitHub</a>
+            <a class="button hf" href="https://huggingface.co/datasets/yyyyywv/egocentric/tree/main" target="_blank" rel="noopener">HF Videos</a>
+            <a class="button hf" href="https://huggingface.co/datasets/yyyyywv/ROBOCHRONO/tree/main" target="_blank" rel="noopener">HF Annotations</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="overview" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Overview</p>
+          <h2>Streaming robot task understanding from synchronized views.</h2>
+        </div>
+        <div class="overview-grid">
+          <p>
+            RoboChrono evaluates how vision-language and embodied AI systems interpret real robot
+            behavior as it unfolds. Each episode pairs synchronized egocentric and external camera
+            streams with temporally grounded annotations, enabling online recognition, progress
+            estimation, spatial reasoning, and fine-grained step ordering under realistic robot
+            execution dynamics.
+          </p>
+          <div class="stats">
+            <div><strong>3</strong><span>synchronized views</span></div>
+            <div><strong>20</strong><span>real robot tasks</span></div>
+            <div><strong>Real</strong><span>embodied execution</span></div>
+            <div><strong>Online</strong><span>temporal reasoning</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="vqa-format" class="section band">
+        <div class="section-heading">
+          <p class="eyebrow">VQA Dataset Format</p>
+          <h2>A unified VQA schema for temporal, spatial, and procedural reasoning.</h2>
+        </div>
+        <div class="vqa-layout">
+          <div class="format-card">
+            <h3>Per-episode Reasoning Tracks</h3>
+            <p>Each record links a robot episode to multi-view observations and targeted questions that probe what happened, where it happened, what should happen next, and how steps unfold over time.</p>
+            <div class="field-grid">
+              <span>understanding</span>
+              <span>left_right</span>
+              <span>planning</span>
+              <span>planning_2</span>
+              <span>trajectory_2D</span>
+              <span>trajectory_3D</span>
+              <span>step_order</span>
+              <span>time</span>
+            </div>
+          </div>
+          <div class="format-card code-card">
+            <h3>Structured Sample</h3>
+            <pre><code>{
+  "task": "airpods",
+  "views": ["top", "wrist_L", "wrist_R"],
+  "question_type": "step_order",
+  "question": "What step comes after opening the case?",
+  "answer": "Pick the left earphone"
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="tasks" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Task Gallery</p>
+          <h2>Twenty real robot tasks captured from synchronized multi-view operation.</h2>
+        </div>
+
+        <div class="task-card">
+          <div class="triview">
+            <article class="video-tile">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="../data/airpods/observation.images.top/chunk-000/file-000.mp4" type="video/mp4">
+              </video>
+            </article>
+            <article class="video-tile">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="../data/airpods/observation.images.wrist_L/chunk-000/file-000.mp4" type="video/mp4">
+              </video>
+            </article>
+            <article class="video-tile">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="../data/airpods/observation.images.wrist_R/chunk-000/file-000.mp4" type="video/mp4">
+              </video>
+            </article>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="triview">
+            <article class="video-tile">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="../data/tea2/gripper/tea2/videos/observation.images.top/chunk-000/file-000.mp4" type="video/mp4">
+              </video>
+            </article>
+            <article class="video-tile">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="../data/tea2/gripper/tea2/videos/observation.images.wrist_L/chunk-000/file-000.mp4" type="video/mp4">
+              </video>
+            </article>
+            <article class="video-tile">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="../data/tea2/gripper/tea2/videos/observation.images.wrist_R/chunk-000/file-000.mp4" type="video/mp4">
+              </video>
+            </article>
+          </div>
+        </div>
+
+        <div class="task-card">
+          <div class="triview">
+            <article class="video-tile">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="../data/cube/left_eye/file-000.mp4" type="video/mp4">
+              </video>
+            </article>
+            <article class="video-tile">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="../data/cube/left_wrist/file-000.mp4" type="video/mp4">
+              </video>
+            </article>
+            <article class="video-tile">
+              <video autoplay muted loop playsinline preload="metadata">
+                <source src="../data/cube/right_wrist/file-000.mp4" type="video/mp4">
+              </video>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="evaluation" class="section band">
+        <div class="section-heading">
+          <p class="eyebrow">Evaluation</p>
+          <h2>Evaluation protocols for online understanding and model comparison.</h2>
+        </div>
+        <div class="method-grid">
+          <article>
+            <span class="method-number">01</span>
+            <h3>Multi-view Encoding</h3>
+            <p>Models receive aligned videos from external and wrist-mounted viewpoints, requiring robust fusion across complementary perspectives.</p>
+          </article>
+          <article>
+            <span class="method-number">02</span>
+            <h3>Online State Estimation</h3>
+            <p>Predictions are evaluated as the stream progresses, testing whether models can maintain task state without access to future frames.</p>
+          </article>
+          <article>
+            <span class="method-number">03</span>
+            <h3>Step-level Metrics</h3>
+            <p>The benchmark supports fine-grained assessment of recognition, temporal alignment, ordering, trajectory reasoning, and progress estimation.</p>
+          </article>
+        </div>
+        <div class="vqa-table-wrap evaluation-table">
+          <table class="vqa-table">
+            <thead>
+              <tr>
+                <th>model</th>
+                <th>understanding</th>
+                <th>left_right</th>
+                <th>planning</th>
+                <th>planning_2</th>
+                <th>trajectory_2D</th>
+                <th>trajectory_3D</th>
+                <th>step_order</th>
+                <th>time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Qwen3-VL-8B-Instruct</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>Qwen3-VL-30B-A3B-Instruct</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>Qwen3-VL-235B-A22B-Instruct</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>qwen3.8-max</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>Seed2.0-Lite</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>InternVL3.5-8B</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>InternVL3.5-30B-A3B</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>GLM-5V-Turbo</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>Gemini-3.1-Pro</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>Gemini-3.5-Flash</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>RynnBrain-2B</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>RynnBrain1.1-2B</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>Cosmos 3-edge 2B</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>Cosmos-reason 2B</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <tr><td>SenseNova-SI-1.1-InternVL32B</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="citation" class="section compact">
+        <div class="section-heading">
+          <p class="eyebrow">Citation</p>
+          <h2>Cite RoboChrono.</h2>
+        </div>
+        <pre><code>@misc{robochrono2026,
+  title={RoboChrono: A Real Robot Benchmark for Streaming Task Understanding},
+  author={Anonymous Authors},
+  year={2026},
+  note={Project page}
+}</code></pre>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>RoboChrono: a real-robot benchmark for streaming task understanding.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
