@@ -1,17 +1,10 @@
-const previewVideos = document.querySelectorAll("video");
-const heroBackgroundVideos = document.querySelectorAll(".hero-video-bg video");
+const videos = [...document.querySelectorAll("video")];
 
-heroBackgroundVideos.forEach((video) => {
-  video.playbackRate = 2;
-});
+function startVideo(video) {
+  video.play().catch(() => { video.controls = true; });
+}
 
-previewVideos.forEach((video) => {
-  video.addEventListener("canplay", () => {
-    if (video.closest(".hero-video-bg")) {
-      video.playbackRate = 2;
-    }
-    video.play().catch(() => {
-      video.controls = true;
-    });
-  }, { once: true });
+videos.forEach((video) => {
+  video.addEventListener("canplay", () => startVideo(video), { once: true });
+  video.addEventListener("mouseenter", () => startVideo(video));
 });
